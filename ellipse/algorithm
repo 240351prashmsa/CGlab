@@ -1,0 +1,32 @@
+Algorithm for ellipse generation: 
+1. Input rx, ry, and ellipse center (xc, yc), and obtain the first point on an ellipse centered on the origin as 
+(x0, y0) = (0, ry) 
+
+2. Calculate the initial parameter in region 1 as 
+p1 =r^2- r^2 r + 1/4 r^ 2
+0  y    x      y      x 
+
+3. At each xi position, starting at i = 0, if p1i < 0, the next point along the ellipse centered on (0, 0) is (xi + 1, yi) and 
+p1 =p1 + 2 r² x +   r²
+i+1 i      y   i+1  y 
+Otherwise, the next point is (xi + 1, yi – 1) and 
+p1 = p1 + 2 r ²x - 2 r²  y +  r²
+i+ 1   I             y   i+1  y 
+and continue until 
+2 r² x >=2 r² y 
+  y         x    
+4.  (x0, y0) is the last position calculated in region 1. Calculate the initial parameter in region 2 as 
+P20=r^2(x0+1/2)^2=R^2(y0-1)^2-r^2r^2
+     Y              x          x y
+5. At each yi position, starting at i = 0, if p2i > 0, the next point along the ellipse centered on (0, 0) is (xi, yi – 1) and 
+p 2 = p 2 - 2 r² y +  r²
+i+1   I        x i+1    x 
+Otherwise, the next point is (xi + 1, yi – 1) and 
+ p 2 = p2- 2 r² y +  r^2
+ i-1     1   x  i+1   x 
+Use the same incremental calculations as in region 1. Continue until y = 0. 
+6. For both regions determine symmetry points in the other three quadrants. 
+7. Move each calculated pixel position (x, y) onto the elliptical path centered on (xc, yc) and plot the coordinate values 
+x = x + xc ,     y = y + yc 
+
+
